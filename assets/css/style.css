@@ -481,7 +481,7 @@ button:hover {
 
 /*GALERIAA*/
 .gallery {
-    background-color: #F2ECE5;
+    background-color: red;
     padding: 0px 50px;
     width: 80%;
     margin: auto;
@@ -3146,7 +3146,7 @@ body {
 }
 
 .gallery {
-    background-color: white;
+    background-color: #F2ECE5 ;
     color: black;
 }
 
@@ -3160,7 +3160,6 @@ body {
 
 /* Estilos para el modo claro */
 .gallery-item {
-    background-color: white;
     /* Fondo blanco */
     color: black;
     /* Texto negro */
