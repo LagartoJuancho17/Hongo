@@ -2,6 +2,9 @@ let subtotalVal = 0; // Subtotal inicial
 let inCarrito = []; // Array para almacenar productos en el carrito
 const cartContainer = document.getElementById('cart-container');
 
+//CARROUSEL HOME
+
+
 // Array de tamaños disponibles
 const sizes = ["39MM", "40MM", "41MM", "42MM", "45MM"];
 // Array de productos para la galeria!!!
