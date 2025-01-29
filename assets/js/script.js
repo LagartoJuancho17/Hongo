@@ -48,9 +48,46 @@ function cargarGaleriaDeFotos() {
             });
         });
     }
-}
+} 
 cargarGaleriaDeFotos();
 console.log("El boton esta funcionando padre")
+
+
+
+
+/*BANNER DE 4 IMAGENES */
+document.addEventListener('DOMContentLoaded', () => {
+    const fotosBannerContainer = document.getElementById('fotosBannerContainer');
+
+    const fotosBannerHTML = `
+        <section class="fotosBanner flex-center display-flex spc-btw fl-wrap">
+            <div class="fotosBanner-item pos-relative">
+                <img src="./assets/images/banner2.jpg" alt="" class="w100">
+                <h1 class="niveau w100 color-white em08 pos-absolute">OUR COLLECTION</h1>
+                <p class="niveau w100 color-gris-oscuro pos-absolute">High quality and <br> good design shape</p>
+            </div>
+            <div id="videoBanner" class="fotosBanner-item pos-relative">
+                <img src="./assets/images/banner3.jpg" alt="" class="w100">
+                <i class="fa-regular fa-circle-play play-icon color-white em4 pos-absolute"></i>
+            </div>
+            <div class="fotosBanner-item pos-relative">
+                <img src="./assets/images/banner1.jpeg" alt="" class="w100">
+            </div>
+            <div class="fotosBanner-item pos-relative">
+                <img src="./assets/images/banner4.jpg" alt="" class="w100">
+                <h1 class="niveau w100 color-dorado em08 pos-absolute">ABOUT ROTARY</h1>
+                <p class="niveau w100 color-white pos-absolute">Designing watches <br> full time work</p>
+            </div>
+        </section>
+    `;
+
+    fotosBannerContainer.innerHTML = fotosBannerHTML;
+});
+
+
+
+
+
 
 function gallery4() {
     const galleryContainer = document.getElementById('gallery-container');
@@ -410,7 +447,31 @@ function toggleDarkMode() {
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark'; //si current es dark entonces el newtheme es light y sino viceversa
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    updateDarkModeIcon(newTheme);
 }
+
+function updateDarkModeIcon(theme) {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const icon = darkModeToggle.querySelector('i');
+    if (theme === 'dark') {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+}
+
+// Llama a la función para asegurarte de que el icono esté correcto al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateDarkModeIcon(savedTheme);
+});
+
+
+
+
 
 function toggleAccordion(button) {
     const content = button.nextElementSibling;
@@ -437,3 +498,12 @@ function actualizarFiltro() {
 
     mostrarProductos(colorSeleccionado, minPrice, maxPrice, sizeSeleccionado);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+    });
+});

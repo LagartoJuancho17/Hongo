@@ -23,38 +23,30 @@
     <header class="display-flex spc-btw navbar w100 items-center">
         <img class="logo" src="./assets/images/logo.png" alt="logo">
 
-        <nav class="display-flex spc-btw items-center ">
-            <ul class="ul-navbar display-flex mar-pad0">
-                <li class="li-navbar"><a href="/index.html" class="color-white niveau em1 pos-relative">Home</a>
-                </li>
-                <li class="li-navbar"><a href="/gallery.html" class="color-white niveau em1 pos-relative">Shop</a>
-                </li>
-                <li class="li-navbar"><a href="/watch-product.html" class="color-white niveau em1">Product</a>
-                </li>
-                <li class="li-navbar"><a href="/size-guide.html" class="color-white niveau em1 pos-relative">Size
-                        Guide</a></li>
-                <li class="li-navbar"><a href="/Shipping-and-delivery.html"
-                        class="color-white niveau em1 pos-relative">Shipping</a></li>
-                <li class="li-navbar"><a href="/store-locator.html"
-                        class="color-white niveau em1 pos-relative">Store Locator</a></li>
-                <li class="li-navbar"><a href="/contact-page.html"
-                        class="color-white niveau em1 pos-relative">Contact</a></li>
+        <nav class="display-flex spc-btw items-center">
+            <ul class="ul-navbar display-flex mar-pad0" id="navMenu">
+                <li class="li-navbar"><a href="/index.html" class="color-white niveau em1 pos-relative">Home</a></li>
+                <li class="li-navbar"><a href="/gallery.html" class="color-white niveau em1 pos-relative">Shop</a></li>
+                <li class="li-navbar"><a href="/watch-product.html" class="color-white niveau em1">Product</a></li>
+                <li class="li-navbar"><a href="/size-guide.html" class="color-white niveau em1 pos-relative">SizeGuide</a></li>
+                <li class="li-navbar"><a href="/Shipping-and-delivery.html" class="color-white niveau em1 pos-relative">Shipping</a></li>
+                <li class="li-navbar"><a href="/store-locator.html" class="color-white niveau em1 pos-relative">Store Locator</a></li>
+                <li class="li-navbar"><a href="/contact-page.html" class="color-white niveau em1 pos-relative">Contact</a></li>
             </ul>
         </nav>
 
         <ul class="ul-iconos display-flex">
             <li class="fas li-iconos"><i class="fa-solid fa-magnifying-glass color-white"></i></li>
-            <li class="fas li-iconos"><i class="fa-regular fa-user color-white"></i></li>
-            <li class="fas li-iconos"><i class="fa-regular fa-heart color-white"></i></li>
-            <li class="fas li-iconos" href=""><button onclick="carrito(0)" id="toggleCartButton"><i class="fa-solid fa-cart-shopping color-white"></i></button></li>
-            <li><button onclick="toggleDarkMode()" class="dark-mode-toggle">
-                <i class="fa-solid fa-moon"></i>
-            </button></li>
+            <li class="fas li-iconos"><i class="fa-solid fa-user color-white"></i></li>
+            <li class="fas li-iconos"><i class="fa-solid fa-heart color-white"></i></li>
+            <li class="fas li-iconos"><button onclick="carrito(0)" id="toggleCartButton"><i class="fa-solid fa-cart-shopping color-white"></i></button></li>
         </ul>
-        <div class="menu-toggle">
+        <div class="menu-toggle" id="menuToggle">
             <i class="fa-solid fa-bars color-white"></i>
         </div>
     </header>
+
+    
 
     <section class="home display-flex items-center">
         <article class="home-reloj">
@@ -63,16 +55,17 @@
         <article class="home-content">
             <h1 class="niveau color-dorado em1">LES ORIGINALES</h1>
             <h3 class="niveau color-white em4 text-left">Hongo of your <br> time a planet</h3>
-            <p class="niveau em1 color-gris">Made from 316L stainless, this classic <br> is intended to stay as such and
-                is designed. </p>
+            <p class="niveau em1 color-gris">Made from 316L stainless, this classic <br> is intended to stay as such and is designed.</p>
             <button class="niveau color-dorado">OUR COLLECTION</button>
         </article>
     </section>
 
 
 
+    <a class="scrollup" href="#">SCROLL UP<i class="fa-solid fa-arrow-down"></i></a>
+    <button onclick="toggleDarkMode()" class="dark-mode-toggle" id="darkModeToggle"><i class="fa-solid fa-moon"></i></button>
+
     <section class="masData-index flex-center display-flex">
-        <a class="scrollup" href="#">SCROLL UP<i class="fa-solid fa-arrow-down"></i></a>
         <div class="intermedio-index flex-center display-flex">
             <p class="niveau color-gris em08">WORLDWIDE SHIPPONG</p>
         </div>
@@ -88,21 +81,7 @@
     </section>
 
     <!--4 FOTOS BANNER-->
-    <section class="fotosBanner flex-center display-flex spc-btw fl-wrap">
-        <div class="fotosBanner pos-relative"><img src="./assets/images/banner2.jpg " at="" class="w100">
-            <h1 class="niveau w100 color-white em08 pos-absolute">OUR COLLECTION</h1>
-            <p class="niveau w100 color-gris-oscuro pos-absolute">High quality and <br> good design shape</p>
-        </div>
-        <div id="videoBanner" class="pos-relative"><img src="./assets/images/banner3.jpg" alt=""
-                class="w100 pos-relative"><i
-                class="fa-regular fa-circle-play play-icon color-white em4 pos-absolute"></i></div>
-        <div class="pos-relative"><img src="./assets/images/banner1.jpeg " alt="" class="w100"></div>
-        <div class="fotosBanner pos-relative"><img src="./assets/images/banner4.jpg" alt="" class="w100 pos-relative">
-            <h1 class="niveau w100 color-dorado em08 pos-absolute">ABOUT ROTARY</h1>
-            <p class="niveau w100 color-white pos-absolute">Designing wathces <br> full time work</p>
-        </div>
-    </section>
-    </section>
+   <article id="fotosBannerContainer"></article>
 
     <!--GALLERY-->
     <article class="gallery flex-center display-grid zonablanca">
@@ -132,14 +111,17 @@
         <h3 class="flex-center niveau em1 color-gris">Elegance is an attitude longines</h3>
     </article>
 
-    <button id="loadMore" onclick="addMoreProductsToGallery()">Load More</button>
+    <!--<button id="loadMore" onclick="addMoreProductsToGallery()">Load More</button>-->
 
     <!--GALLERY DE 4-->
+    
     <div class="flex-center display-flex gallery-4-div">
-        <article class="gallery-grid display-grid" id="gallery-container">
-            <!-- espacio para q spawneen las cosas -->
-        </article>
-    </div>
+    <article class="gallery-grid display-grid" id="gallery-container">
+        <!-- Contenido de la galería -->
+    </article>
+</div>
+        
+
 
     <section class="banner display-flex">
         <div id="off70" class="back-cover flex-center display-flex w100">
@@ -174,7 +156,7 @@
 
 
     <section class="blogs display-flex spc-btw fl-wrap">
-        <div id="container">
+        <div id="container" class="display-flex fl-wrap">
             <article class="blog">
                 <img src="./assets/images/blog 1.jpg" alt="Stylish Watch" class="w100">
                 <div class="blog-content">
@@ -233,6 +215,7 @@
             </article>
         </div>
     </section>
+
     <div id="cart-container" class="cart-container">
         <h4>Cart</h4>
         <ul id="carro"></ul>

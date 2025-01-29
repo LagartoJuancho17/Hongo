@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="mar-pad0" style="background-color: white;">
+<body class="mar-pad0">
     <header class="display-flex spc-btw navbar w100 items-center">
         <img class="logo" src="./assets/images/logo.png" alt="logo">
         <nav class="display-flex spc-btw items-center ">
@@ -51,14 +51,14 @@
                 </button></li>
         </ul>
         <div class="menu-toggle">
-            <i class="fa-solid fa-bars color-white"></i>
+            <i class="fa-solid fa-bars"></i>
         </div>
     </header>
 
     <section class="home-comun display-flex flex-center w100 pos-relative" id="home-store-locator">
         <div class="home-texto-comun flex-center display-flex">
             <h2 class="niveau em2 color-white gallery-text">Shop Locator</h2>
-            <p class="niveau em1 color-gris gallery-text">worldwide fashion store</p>
+            <p class="niveau em1 color-gris gallery-text">Worldwide fashion store</p>
         </div>
     </section>
 
@@ -68,28 +68,27 @@
         <a href="#" class="niveau">Shop classic</a>
     </div>
 
-    <div class="filter-toggle" onclick="toggleSidebar()"></div>
+    <div class="filter-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></div>
 
     <section class="container-shop display-flex fl-wrap">
         <article class="sidebar" id="sidebar">
             <div class="filter-section">
                 <h3 class="niveau color-gris-oscuro">Filter by color</h3>
                 <ul>
-                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative"><input type="radio"
+                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative niveau"><input type="radio"
                                 name="color" value="red">Red</label></li>
-                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative"><input type="radio"
+                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative niveau"><input type="radio"
                                 name="color" value="black">Black</label></li>
-                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative"><input type="radio"
+                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative niveau"><input type="radio"
                                 name="color" value="green">Green</label></li>
-                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative"><input type="radio"
+                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative niveau"><input type="radio"
                                 name="color" value="blue">Blue</label></li>
-                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative"><input type="radio"
+                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative niveau"><input type="radio"
                                 name="color" value="silver">Silver</label></li>
-                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative"><input type="radio"
+                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative niveau"><input type="radio"
                                 name="color" value="rosegold">Rose Gold</label></li>
-                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative"><input type="radio"
+                    <li><label class="display-flex custom-checkbox myriad color-gris pos-relative niveau"><input type="radio"
                                 name="color" value="all"
-                                style="appearance: none; width: 20px; height: 20px; border: 2px solid #000; border-radius: 50%; background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); cursor: pointer;"
                                 onclick="resetGallery()">All</label></li>
                 </ul>
             </div>
@@ -106,15 +105,15 @@
             </div>
 
             <div class="filter-section">
-                <h1>Price Range:</h1>
-                <p>Move Slider to choose the price range.</p>
+                <h3 class="niveau color-gris-oscuro">Price Range</h3>
+                <p class="niveau color-gris">Move Slider to choose the price range.</p>
 
                 <div class="min-max">
                     <div class="min">
-                        <label>Min</label><span id="min-value"></span>
+                        <label class=" niveau">Min</label><span id="min-value"></span>
                     </div>
                     <div class="max">
-                        <label>Max</label><span id="max-value"></span>
+                        <label class="niveau">Max</label><span id="max-value"></span>
                     </div>
                 </div>
 
@@ -127,7 +126,7 @@
             </div>
 
             <div class="filter-section">
-                <h1>Star Rating Filter</h1>
+                <h3 class="niveau color-gris-oscuro">Star Rating Filter</h3>
                 <div class="stars-filter" id="starFilter">
                     <span data-value="1">★</span>
                     <span data-value="2">★</span>
@@ -166,7 +165,7 @@
                     </div>
                 </div>
 
-                <select>
+                <select class="niveau color-gris-oscuro">
                     <option>Default Sorting</option>
                 </select>
             </div>
