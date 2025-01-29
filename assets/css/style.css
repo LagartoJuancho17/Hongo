@@ -3432,3 +3432,57 @@ body {
 }
 
 
+.additional-info-chart {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.additional-info-chart h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.additional-info-chart ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.additional-info-chart li {
+    margin: 5px 0;
+}
+
+.review-form {
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+.review-form input, .review-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.stars {
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+}
+.stars span {
+    font-size: 24px;
+    color: #ccc;
+}
+.stars span:hover,
+.stars span:hover ~ span {
+    color: orange;
+}
+.submit-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
