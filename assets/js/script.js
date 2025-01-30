@@ -363,21 +363,6 @@ function toggleSidebar() {
     content.classList.toggle('shifted');
 }
 
-document.querySelectorAll('.tab-link').forEach(link => {
-    link.addEventListener('click', function () {
-        document.querySelectorAll('.tab-link').forEach(item => item.classList.remove('active'));
-        document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
-        this.classList.add('active');
-        document.getElementById(this.getAttribute('data-tab')).classList.add('active');
-
-        if (this.getAttribute('data-tab') === 'additional-info') {
-            document.querySelector('.image-content').style.display = 'none';
-        } else {
-            document.querySelector('.image-content').style.display = 'flex';
-        }
-    });
-});
-
 //SHOPPING CART
 
 document.getElementById('toggleCartButton').addEventListener('click', function () {
@@ -508,5 +493,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('open');
+    });
+});
+
+document.querySelectorAll('.tab-link').forEach(link => {
+    link.addEventListener('click', function () {
+        // Remove 'active' class from all tab links
+        document.querySelectorAll('.tab-link').forEach(item => item.classList.remove('active'));
+        // Add 'active' class to the clicked tab link
+        this.classList.add('active');
+
+        // Hide all content sections
+        document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+
+        // Show the content section corresponding to the clicked tab
+        const tabId = this.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
     });
 });

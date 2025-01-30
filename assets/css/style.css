@@ -2838,13 +2838,16 @@ td {
 }
 
 .cuerpo {
-    display: flex;
+    display: table-cell;
     justify-content: flex-start;
+    vertical-align: middle;
+    text-align: left;
     background-color: #ffff;
 }
 
 .cuerpo-color {
     background-color: #f7f7f7;
+    
 }
 
 .numbers {
@@ -2897,6 +2900,7 @@ td {
     background-color: #333;
     padding: 10px;
     border: 1px solid #444;
+    text-align: center;
 }
 
 .size-chart-cell {
@@ -2980,19 +2984,35 @@ td {
     }
 }
 
+#body-size-guide {
+    background-color: white;
+}
 
+[data-theme="dark"] #body-size-guide {
+    background-color: #232323;
+    /* Fondo oscuro */
+    color: white;
+    /* Texto blanco */
+}
 
+/* Estilos para la primera tabla en modo oscuro */
+[data-theme="dark"] .first-table {
+    /* Copia aquí los estilos de la segunda tabla */
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #444444;
+}
 
+[data-theme="dark"] .first-table th,
+[data-theme="dark"] .first-table td {
+    border: 1px solid #444444;
+    background-color: #232323;
+    color: white;
+}
 
-
-
-
-
-
-
-
-
-
+[data-theme="dark"] .size-chart-text-section h2, .size-chart-text-section p{
+        color: white;
+}
 
 
 
@@ -3485,4 +3505,14 @@ body {
     border: none;
     cursor: pointer;
     margin-top: 10px;
+}
+
+
+
+.hidden {
+    display: none;
+}
+
+.hidden {
+    display: none;
 }

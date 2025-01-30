@@ -6,37 +6,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hongo Watch - Size Guide</title>
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ramabhadra&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/vkf1vit.css">
+
+    <script src="https://kit.fontawesome.com/985d18d620.js" crossorigin="anonymous"></script>
+
 </head>
 
-<body class="mar-pad0" style="background-color: white;">
+<body class="mar-pad0" id="body-size-guide">
 
-    <header class="display-flex spc-btw navbar w100 items-center">
-            <img class="logo" src="./assets/images/logo.png" alt="logo">
-            <nav class="display-flex spc-btw items-center ">
-            <ul class="ul-navbar display-flex mar-pad0">
-                <li class="li-navbar"><a href="/index.html" class="color-white niveau em1 pos-relative">Home</a>
-                </li>
-                <li class="li-navbar"><a href="/gallery.html" class="color-white niveau em1 pos-relative">Shop</a>
-                </li>
-                <li class="li-navbar"><a href="/watch-product.html" class="color-white niveau em1">Product</a>
-                </li>
-                <li class="li-navbar"><a href="/size-guide.html" class="color-white niveau em1 pos-relative">Size
-                        Guide</a></li>
-                <li class="li-navbar"><a href="/Shipping-and-delivery.html"
-                        class="color-white niveau em1 pos-relative">Shipping</a></li>
-                <li class="li-navbar"><a href="/store-locator.html"
-                        class="color-white niveau em1 pos-relative">Store Locator</a></li>
-                <li class="li-navbar"><a href="/contact-page.html"
-                        class="color-white niveau em1 pos-relative">Contact</a></li>
-            </ul>
-        </nav>
-            <ul class="ul-iconos display-flex">
-                <li class="fas li-iconos"><i class="fa-solid fa-magnifying-glass color-white"></i></li>
-                <li class="fas li-iconos"><i class="fa-regular fa-user color-white"></i></li>
-                <li class="fas li-iconos"><i class="fa-regular fa-heart color-white"></i></li>
-                <li class="fas li-iconos"><i class="fa-solid fa-cart-shopping color-white"></i></li>
-            </ul>
-        </header>
+  <header class="display-flex spc-btw navbar w100 items-center">
+    <img class="logo" src="./assets/images/logo.png" alt="logo">
+
+    <nav class="display-flex spc-btw items-center">
+        <ul class="ul-navbar display-flex mar-pad0" id="navMenu">
+            <li class="li-navbar"><a href="/index.html" class="color-white niveau em1 pos-relative">Home</a></li>
+            <li class="li-navbar"><a href="/gallery.html" class="color-white niveau em1 pos-relative">Shop</a></li>
+            <li class="li-navbar"><a href="/watch-product.html" class="color-white niveau em1">Product</a></li>
+            <li class="li-navbar"><a href="/size-guide.html" class="color-white niveau em1 pos-relative">SizeGuide</a></li>
+            <li class="li-navbar"><a href="/Shipping-and-delivery.html" class="color-white niveau em1 pos-relative">Shipping</a></li>
+            <li class="li-navbar"><a href="/store-locator.html" class="color-white niveau em1 pos-relative">Store Locator</a></li>
+            <li class="li-navbar"><a href="/contact-page.html" class="color-white niveau em1 pos-relative">Contact</a></li>
+        </ul>
+    </nav>
+
+    <ul class="ul-iconos display-flex">
+        <li class="fas li-iconos"><i class="fa-solid fa-magnifying-glass color-white"></i></li>
+        <li class="fas li-iconos"><i class="fa-solid fa-user color-white"></i></li>
+        <li class="fas li-iconos"><i class="fa-solid fa-heart color-white"></i></li>
+        <li class="fas li-iconos"><button onclick="carrito(0)" id="toggleCartButton"><i class="fa-solid fa-cart-shopping color-white"></i></button></li>
+    </ul>
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars color-white"></i>
+    </div>
+</header>
         
     <section class="home-comun display-flex flex-center w100 pos-relative" id="size-guide">
         <div class="home-texto-comun flex-center display-flex">
@@ -45,94 +52,95 @@
         </div>
     </section>
 
+    <button onclick="toggleDarkMode()" class="dark-mode-toggle" id="darkModeToggle"><i class="fa-solid fa-moon"></i></button>
 
   <h2 class="niveau em08 flex-center" style="margin: 40px;">
     - WOMEN'S SIZE CHART CLOTHING FOR US -
   </h2>
-  <table class="size-chart">
+  <table class="size-chart first-table">
     <thead>
-      <tr>
-        <th>Woman Size Chart</th>
-        <th>S</th>
-        <th>M</th>
-        <th>L</th>
-        <th>XL</th>
-        <th>XXL</th>
-        <th>2XL</th>
+      <tr>  
+        <th class="niveau color-gris-oscuro">Woman Size Chart</th>
+        <th class="niveau">S</th>
+        <th class="niveau">M</th>
+        <th class="niveau">L</th>
+        <th class="niveau">XL</th>
+        <th class="niveau">XXL</th>
+        <th class="niveau">2XL</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="cuerpo-color numbers">
+      <tr class="cuerpo-color numbers myriad color-gris-oscuro">
         <td class="cuerpo cuerpo-color">Collar</td>
-        <td class="cuerpo-color numbers">14</td>
-        <td class="cuerpo-color numbers">15</td>
-        <td class="cuerpo-color numbers">16</td>
-        <td class="cuerpo-color numbers">17</td>
-        <td class="cuerpo-color numbers">18</td>
-        <td class="cuerpo-color numbers">19</td>
+        <td class="cuerpo-color numbers niveau">14</td>
+        <td class="cuerpo-color numbers niveau">15</td>
+        <td class="cuerpo-color numbers niveau">16</td>
+        <td class="cuerpo-color numbers niveau">17</td>
+        <td class="cuerpo-color numbers niveau">18</td>
+        <td class="cuerpo-color numbers niveau">19</td>
       </tr>
       <tr class="numbers">
-        <td class="cuerpo niveau color-gris" style="text-align: left; display: table-cell; vertical-align: middle;">Shoulder</td>
-        <td class="numbers">16</td>
-        <td class="numbers">17</td>
-        <td class="numbers">18</td>
-        <td class="numbers">19</td>
-        <td class="numbers">20</td>
-        <td class="numbers">21</td>
+        <td class="cuerpo myriad color-gris-oscuro"">Shoulder</td>
+        <td class="numbers niveau">16</td>
+        <td class="numbers niveau">17</td>
+        <td class="numbers niveau">18</td>
+        <td class="numbers niveau">19</td>
+        <td class="numbers niveau">20</td>
+        <td class="numbers niveau">21</td>
       </tr>
       <tr class="cuerpo-color numbers">
-        <td class="cuerpo cuerpo-color">Chest, waist, hips</td>
-        <td class="cuerpo-color numbers">28-29</td>
-        <td class="cuerpo-color numbers">30-31</td>
-        <td class="cuerpo-color numbers">32-33</td>
-        <td class="cuerpo-color numbers">34-35</td>
-        <td class="cuerpo-color numbers">36-37</td>
-        <td class="cuerpo-color numbers">38-39</td>
+        <td class="cuerpo cuerpo-color myriad color-gris-oscuro">Chest, waist, hips</td>
+        <td class="cuerpo-color numbers niveau">28-29</td>
+        <td class="cuerpo-color numbers niveau">30-31</td>
+        <td class="cuerpo-color numbers niveau">32-33</td>
+        <td class="cuerpo-color numbers niveau">34-35</td>
+        <td class="cuerpo-color numbers niveau">36-37</td>
+        <td class="cuerpo-color numbers niveau">38-39</td>
       </tr>
       <tr class="numbers">
-        <td class="cuerpo">Cuff</td>
-        <td class="numbers">9</td>
-        <td class="numbers">9.5</td>
-        <td class="numbers">10</td>
-        <td class="numbers">10.5</td>
-        <td class="numbers">11</td>
-        <td class="numbers">11.5</td>
+        <td class="cuerpo myriad color-gris-oscuro">Cuff</td>
+        <td class="numbers niveau">9</td>
+        <td class="numbers niveau">9.5</td>
+        <td class="numbers niveau">10</td>
+        <td class="numbers niveau">10.5</td>
+        <td class="numbers niveau">11</td>
+        <td class="numbers niveau">11.5</td>
       </tr>
       <tr class="cuerpo-color numbers">
-        <td class="cuerpo cuerpo-color">Short-sleeve length</td>
-        <td class="cuerpo-color numbers">10</td>
-        <td class="cuerpo-color numbers">10.5</td>
-        <td class="cuerpo-color numbers">11</td>
-        <td class="cuerpo-color numbers">11.5</td>
-        <td class="cuerpo-color numbers">12</td>
-        <td class="cuerpo-color numbers">12.5</td>
+        <td class="cuerpo cuerpo-color myriad color-gris-oscuro">Short-sleeve length</td>
+        <td class="cuerpo-color numbers niveau">10</td>
+        <td class="cuerpo-color numbers niveau">10.5</td>
+        <td class="cuerpo-color numbers niveau">11</td>
+        <td class="cuerpo-color numbers niveau">11.5</td>
+        <td class="cuerpo-color numbers niveau">12</td>
+        <td class="cuerpo-color numbers niveau">12.5</td>
       </tr>
       <tr class="numbers">
-        <td class="cuerpo">Long-sleeve length</td>
-        <td class="numbers">23</td>
-        <td class="numbers">23.5</td>
-        <td class="numbers">24</td>
-        <td class="numbers">24.5</td>
-        <td class="numbers">25</td>
-        <td class="numbers">25.5</td>
+        <td class="cuerpo myriad color-gris-oscuro">Long-sleeve length</td>
+        <td class="numbers niveau">23</td>
+        <td class="numbers niveau">23.5</td>
+        <td class="numbers niveau">24</td>
+        <td class="numbers niveau">24.5</td>
+        <td class="numbers niveau">25</td>
+        <td class="numbers niveau">25.5</td>
       </tr>
       <tr class="cuerpo-color numbers">
-        <td class="cuerpo cuerpo-color">Arm Hole</td>
-        <td class="cuerpo-color numbers">22</td>
-        <td class="cuerpo-color numbers">22.5</td>
-        <td class="cuerpo-color numbers">23</td>
-        <td class="cuerpo-color numbers">23.5</td>
-        <td class="cuerpo-color numbers">24</td>
-        <td class="cuerpo-color numbers">24.5</td>
+        <td class="cuerpo cuerpo-color myriad color-gris-oscuro">Arm Hole</td>
+        <td class="cuerpo-color numbers niveau">22</td>
+        <td class="cuerpo-color numbers niveau">22.5</td>
+        <td class="cuerpo-color numbers niveau">23</td>
+        <td class="cuerpo-color numbers niveau">23.5</td>
+        <td class="cuerpo-color numbers niveau">24</td>
+        <td class="cuerpo-color numbers niveau">24.5</td>
       </tr>
       <tr class="numbers">
-        <td class="cuerpo">Back length</td>
-        <td class="numbers">30</td>
-        <td class="numbers">32</td>
-        <td class="numbers">34</td>
-        <td class="numbers">36</td>
-        <td class="numbers">38</td>
-        <td class="numbers">40</td>
+        <td class="cuerpo myriad color-gris-oscuro">Back length</td>
+        <td class="numbers niveau">30</td>
+        <td class="numbers niveau">32</td>
+        <td class="numbers niveau">34</td>
+        <td class="numbers niveau">36</td>
+        <td class="numbers niveau">38</td>
+        <td class="numbers niveau">40</td>
       </tr>
     </tbody>
   </table>
@@ -166,87 +174,87 @@
   <table class="size-chart-table">
     <thead>
       <tr>
-        <th class="size-chart-header text-left">Man Size Chart</th>
-        <th class="size-chart-header">S</th>
-        <th class="size-chart-header">M</th>
-        <th class="size-chart-header">L</th>
-        <th class="size-chart-header">XL</th>
-        <th class="size-chart-header">XXL</th>
-        <th class="size-chart-header">2XL</th>
+        <th class="size-chart-header text-left niveau">Man Size Chart</th>
+        <th class="size-chart-header niveau" style="text-align: center;">S</th>
+        <th class="size-chart-header niveau">M</th>
+        <th class="size-chart-header niveau">L</th>
+        <th class="size-chart-header niveau">XL</th>
+        <th class="size-chart-header niveau">XXL</th>
+        <th class="size-chart-header niveau">2XL</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="size-chart-cell text-left">Collar</td>
-        <td class="size-chart-cell">14</td>
-        <td class="size-chart-cell">15</td>
-        <td class="size-chart-cell">16</td>
-        <td class="size-chart-cell">17</td>
-        <td class="size-chart-cell">18</td>
-        <td class="size-chart-cell">19</td>
+        <td class="size-chart-cell text-left myriad">Collar</td>
+        <td class="size-chart-cell niveau">14</td>
+        <td class="size-chart-cell niveau">15</td>
+        <td class="size-chart-cell niveau">16</td>
+        <td class="size-chart-cell niveau">17</td>
+        <td class="size-chart-cell niveau">18</td>
+        <td class="size-chart-cell niveau">19</td>
       </tr>
       <tr>
-        <td class="size-chart-cell text-left">Shoulder</td>
-        <td class="size-chart-cell">16</td>
-        <td class="size-chart-cell">17</td>
-        <td class="size-chart-cell">18</td>
-        <td class="size-chart-cell">19</td>
-        <td class="size-chart-cell">20</td>
-        <td class="size-chart-cell">21</td>
+        <td class="size-chart-cell text-left myriad">Shoulder</td>
+        <td class="size-chart-cell niveau">16</td>
+        <td class="size-chart-cell niveau">17</td>
+        <td class="size-chart-cell niveau">18</td>
+        <td class="size-chart-cell niveau">19</td>
+        <td class="size-chart-cell niveau">20</td>
+        <td class="size-chart-cell niveau">21</td>
       </tr>
       <tr>
-        <td class="size-chart-cell text-left">Chest, waist, hips</td>
-        <td class="size-chart-cell">28-29</td>
-        <td class="size-chart-cell">30-31</td>
-        <td class="size-chart-cell">32-33</td>
-        <td class="size-chart-cell">34-35</td>
-        <td class="size-chart-cell">36-37</td>
-        <td class="size-chart-cell">38-39</td>
+        <td class="size-chart-cell text-left myriad">Chest, waist, hips</td>
+        <td class="size-chart-cell niveau">28-29</td>
+        <td class="size-chart-cell niveau">30-31</td>
+        <td class="size-chart-cell niveau">32-33</td>
+        <td class="size-chart-cell niveau">34-35</td>
+        <td class="size-chart-cell niveau">36-37</td>
+        <td class="size-chart-cell niveau">38-39</td>
       </tr>
       <tr>
-        <td class="size-chart-cell text-left">Cuff</td>
-        <td class="size-chart-cell">9</td>
-        <td class="size-chart-cell">9.5</td>
-        <td class="size-chart-cell">10</td>
-        <td class="size-chart-cell">10.5</td>
-        <td class="size-chart-cell">11</td>
-        <td class="size-chart-cell">11.5</td>
+        <td class="size-chart-cell text-left myriad">Cuff</td>
+        <td class="size-chart-cell niveau">9</td>
+        <td class="size-chart-cell niveau">9.5</td>
+        <td class="size-chart-cell niveau">10</td>
+        <td class="size-chart-cell niveau">10.5</td>
+        <td class="size-chart-cell niveau">11</td>
+        <td class="size-chart-cell niveau">11.5</td>
       </tr>
       <tr>
-        <td class="size-chart-cell text-left">Short-sleeve length</td>
-        <td class="size-chart-cell">10</td>
-        <td class="size-chart-cell">10.5</td>
-        <td class="size-chart-cell">11</td>
-        <td class="size-chart-cell">11.5</td>
-        <td class="size-chart-cell">12</td>
-        <td class="size-chart-cell">12.5</td>
+        <td class="size-chart-cell text-left myriad">Short-sleeve length</td>
+        <td class="size-chart-cell niveau">10</td>
+        <td class="size-chart-cell niveau">10.5</td>
+        <td class="size-chart-cell niveau">11</td>
+        <td class="size-chart-cell niveau">11.5</td>
+        <td class="size-chart-cell niveau">12</td>
+        <td class="size-chart-cell niveau">12.5</td>
       </tr>
       <tr>
-        <td class="size-chart-cell text-left">Long-sleeve length</td>
-        <td class="size-chart-cell">23</td>
-        <td class="size-chart-cell">23.5</td>
-        <td class="size-chart-cell">24</td>
-        <td class="size-chart-cell">24.5</td>
-        <td class="size-chart-cell">25</td>
-        <td class="size-chart-cell">25.5</td>
+        <td class="size-chart-cell text-left myriad">Long-sleeve length</td>
+        <td class="size-chart-cell niveau">23</td>
+        <td class="size-chart-cell niveau">23.5</td>
+        <td class="size-chart-cell niveau">24</td>
+        <td class="size-chart-cell niveau">24.5</td>
+        <td class="size-chart-cell niveau">25</td>
+        <td class="size-chart-cell niveau">25.5</td>
       </tr>
       <tr>
-        <td class="size-chart-cell text-left">Arm Hole</td>
-        <td class="size-chart-cell">22</td>
-        <td class="size-chart-cell">22.5</td>
-        <td class="size-chart-cell">23</td>
-        <td class="size-chart-cell">23.5</td>
-        <td class="size-chart-cell">24</td>
-        <td class="size-chart-cell">24.5</td>
+        <td class="size-chart-cell text-left myriad">Arm Hole</td>
+        <td class="size-chart-cell niveau">22</td>
+        <td class="size-chart-cell niveau">22.5</td>
+        <td class="size-chart-cell niveau">23</td>
+        <td class="size-chart-cell niveau">23.5</td>
+        <td class="size-chart-cell niveau">24</td>
+        <td class="size-chart-cell niveau">24.5</td>
       </tr>
       <tr>
-        <td class="size-chart-cell text-left">Back length</td>
-        <td class="size-chart-cell">30</td>
-        <td class="size-chart-cell">32</td>
-        <td class="size-chart-cell">34</td>
-        <td class="size-chart-cell">36</td>
-        <td class="size-chart-cell">38</td>
-        <td class="size-chart-cell">40</td>
+        <td class="size-chart-cell text-left myriad">Back length</td>
+        <td class="size-chart-cell niveau">30</td>
+        <td class="size-chart-cell niveau">32</td>
+        <td class="size-chart-cell niveau">34</td>
+        <td class="size-chart-cell niveau">36</td>
+        <td class="size-chart-cell niveau">38</td>
+        <td class="size-chart-cell niveau">40</td>
       </tr>
     </tbody>
   </table>
