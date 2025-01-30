@@ -363,6 +363,20 @@ function toggleSidebar() {
     content.classList.toggle('shifted');
 }
 
+document.querySelectorAll('.tab-link').forEach(link => {
+    link.addEventListener('click', function () {
+        document.querySelectorAll('.tab-link').forEach(item => item.classList.remove('active'));
+        document.querySelectorAll('.content-section-imagen-product').forEach(section => {
+            section.style.display = 'none'; // Hide all sections
+            section.classList.remove('active');
+        });
+        this.classList.add('active');
+        const activeSection = document.getElementById(this.getAttribute('data-tab'));
+        activeSection.style.display = 'block'; // Show the selected section
+        activeSection.classList.add('active');
+    });
+});
+
 //SHOPPING CART
 
 document.getElementById('toggleCartButton').addEventListener('click', function () {
@@ -496,18 +510,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-document.querySelectorAll('.tab-link').forEach(link => {
-    link.addEventListener('click', function () {
-        // Remove 'active' class from all tab links
-        document.querySelectorAll('.tab-link').forEach(item => item.classList.remove('active'));
-        // Add 'active' class to the clicked tab link
-        this.classList.add('active');
-
-        // Hide all content sections
-        document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
-
-        // Show the content section corresponding to the clicked tab
-        const tabId = this.getAttribute('data-tab');
-        document.getElementById(tabId).classList.add('active');
-    });
-});
