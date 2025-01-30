@@ -473,8 +473,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
 function toggleAccordion(button) {
     const content = button.nextElementSibling;
     const isOpen = content.style.display === "block";
