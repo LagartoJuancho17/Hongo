@@ -451,7 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-let currentLoadedProducts = 4; // Keep track of how many products are loaded
+/*let currentLoadedProducts = 4; // Keep track of how many products are loaded
 
 function gallery4() {
     const galleryContainer = document.getElementById('gallery-container');
@@ -531,4 +531,50 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loadMoreBtn) {
         loadMoreBtn.addEventListener('click', loadMore);
     }
-});
+});*/
+
+
+const merca = [
+    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
+    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
+    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
+    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
+    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
+    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
+    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
+    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" }
+];
+
+let currentLoadedProducts = 4;
+
+function cargarGaleria() {
+    const galleryContainer = document.getElementById('galleryContainer');
+    galleryContainer.innerHTML = '';
+
+    merca.slice(0, currentLoadedProducts).forEach((producto, index) => {
+        const sectionProducto = document.createElement('section');
+        sectionProducto.classList.add('gallery-4-cards');
+        sectionProducto.id = `div${index + 1}`;
+        sectionProducto.style.backgroundImage = `url(${producto.imagen})`;
+
+        sectionProducto.innerHTML = `
+            <h3 class="myriad rem1">${producto.nombre}</h3>
+            <p class="myriad rem1 color-gris">$${producto.precio}</p>
+        `;
+
+        galleryContainer.appendChild(sectionProducto);
+    });
+}
+
+function loadMore() {
+    if (currentLoadedProducts < merca.length) {
+        currentLoadedProducts += 4;
+        cargarGaleria();
+    } else {
+        alert("No hay más productos para cargar");
+    }
+}
+
+document.getElementById('loadMoreBtn').addEventListener('click', loadMore);
+
+cargarGaleria();
