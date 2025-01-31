@@ -10,6 +10,10 @@
     vertical-align: baseline;
 }
 
+.bk-white{
+    background-color: white;
+}
+
 .flex-center {
     justify-content: center;
     text-align: center;
@@ -1618,11 +1622,16 @@ ul li:nth-of-type(6) .custom-checkbox::before {
     /* Espaciado en todo el contenedor */
 }
 
+[data-theme="dark"]#Shipping-body {
+    background-color: #000;
+}
+
 .image-section-shipping img {
     max-width: 100%;
     height: auto;
     /* Mantiene la relación de aspecto */
 }
+
 
 .text-section-shipping {
     flex: 1 1 300px;
@@ -1745,10 +1754,14 @@ ul li:nth-of-type(6) .custom-checkbox::before {
 }
 
 
+[data-theme = "dark"].container-shipping{
+    background-color: #000;
+}
+
 /*Store Locator*/
 
 #home-store-locator {
-    background: url(.);
+    background: url(/assets/images/);
     background-size: cover;
     max-width: 100vw;
 }
@@ -3436,7 +3449,7 @@ body {
 }
 
 [data-theme="dark"] .dark-mode-toggle {
-    background-color: #fff;
+    
     color: black;
 }
 
@@ -3514,4 +3527,30 @@ body {
     color: #000;
 }
 
+.gallery-4-cards h3{
+    margin: 30px;
+}
+.gallery-4-cards p{
+    margin: 30px;
+    top: 20px;
+}
 
+.gallery-grid #div1{
+    background-image: url(../images/reloj_producto.jpeg);
+}
+
+.gallery-grid #div2{
+    background-image: url(../images/reloj_producto.jpeg);
+}
+
+.gallery-grid #div3{
+    background-image: url(../images/reloj_producto.jpeg);
+    grid-column: span 2;
+     grid-row: span 2;
+}
+
+.gallery-grid #div4{
+    background-image: url(../images/reloj_producto.jpeg);
+    grid-column: span 2;
+    transform: rotate(180deg);
+}

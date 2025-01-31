@@ -88,63 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-
-
-function gallery4() {
-    const galleryContainer = document.getElementById('gallery-container');
-    if (galleryContainer) {
-        productos.slice(0, 4).forEach((producto, index) => {
-            // Crea una nueva seccion para el producto
-            const sectionProducto = document.createElement('section');
-            sectionProducto.classList.add('gallery-4-cards', 'pos-relative');
-            sectionProducto.id = `div${index + 1}`; //le pone los divs de la gallery4
-
-            // Agrega los productos
-            sectionProducto.innerHTML = `
-                <img src="${producto.imagen}" class="w100 product-image" alt="${producto.nombre}">
-                <h3 class="myriad rem1">${producto.nombre}</h3>
-                <p class="flex-center myriad rem1 color-gris">$${producto.precio}</p>
-                <p class="flex-center myriad rem1 color-gris">Size: ${producto.size}</p>
-                <div class="add-text">
-                    <button onclick="carrito(${index})" class="addcart">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    </button>
-                </div>
-            `;
-
-            // mete la seccion al contenedor
-            galleryContainer.appendChild(sectionProducto);
-
-            // efecto hover
-            const imgElement = sectionProducto.querySelector('.product-image');
-            imgElement.addEventListener('mouseenter', () => {
-                imgElement.src = producto.imagenHover;
-            });
-            imgElement.addEventListener('mouseleave', () => {
-                imgElement.src = producto.imagen;
-            });
-        });
-
-        // css para la galeria (no funciona todavia)
-        const div3 = document.getElementById('div3');
-        if (div3) {
-            div3.style.gridColumn = 'span 2';
-            div3.style.gridRow = 'span 2';
-        }
-
-        const div4 = document.getElementById('div4');
-        if (div4) {
-            div4.style.gridColumn = 'span 2';
-            div4.style.transform = 'rotate(180deg)';
-        }
-    }
-}
-
-
-gallery4();
-
 function changeColumns(columns) {
     const productGrid = document.getElementById("productGrid");
     productGrid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
@@ -508,3 +451,84 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+let currentLoadedProducts = 4; // Keep track of how many products are loaded
+
+function gallery4() {
+    const galleryContainer = document.getElementById('gallery-container');
+    if (galleryContainer) {
+        // Clear existing content
+        galleryContainer.innerHTML = '';
+        
+        // Load products from current index up to currentLoadedProducts
+        productos.slice(0, currentLoadedProducts).forEach((producto, index) => {
+            // Create a new section for the product
+            const sectionProducto = document.createElement('section');
+            sectionProducto.classList.add('gallery-4-cards', 'pos-relative');
+            sectionProducto.id = `div${index + 1}`; 
+
+            // Add the products
+            sectionProducto.innerHTML = `
+                <img src="${producto.imagen}" class="w100 product-image" alt="${producto.nombre}">
+                <h3 class="myriad rem1">${producto.nombre}</h3>
+                <p class="flex-center myriad rem1 color-gris">$${producto.precio}</p>
+                <p class="flex-center myriad rem1 color-gris">Size: ${producto.size}</p>
+                <div class="add-text">
+                    <button onclick="carrito(${index})" class="addcart">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </button>
+                </div>
+            `;
+
+            // Add the section to container
+            galleryContainer.appendChild(sectionProducto);
+
+            // Hover effect
+            const imgElement = sectionProducto.querySelector('.product-image');
+            imgElement.addEventListener('mouseenter', () => {
+                imgElement.src = producto.imagenHover;
+            });
+            imgElement.addEventListener('mouseleave', () => {
+                imgElement.src = producto.imagen;
+            });
+        });
+
+        // Update special styling for div3 and div4
+        const div3 = document.getElementById('div3');
+        if (div3) {
+            div3.style.gridColumn = 'span 2';
+            div3.style.gridRow = 'span 2';
+        }
+
+        const div4 = document.getElementById('div4');
+        if (div4) {
+            div4.style.gridColumn = 'span 2';
+            div4.style.transform = 'rotate(180deg)';
+        }
+
+        // Show/hide load more button based on remaining products
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        if (loadMoreBtn) {
+            loadMoreBtn.style.display = currentLoadedProducts >= productos.length ? 'none' : 'block';
+        }
+    }
+}
+
+// Add this new function to handle loading more products
+function loadMore() {
+    currentLoadedProducts += 4; // Increase the number of products to show
+    if (currentLoadedProducts > productos.length) {
+        currentLoadedProducts = productos.length;
+    }
+    gallery4(); // Reload the gallery with more products
+}
+
+// Call gallery4() initially to load the first 4 products
+gallery4();
+
+// Add event listener for the load more button
+document.addEventListener('DOMContentLoaded', () => {
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', loadMore);
+    }
+});
