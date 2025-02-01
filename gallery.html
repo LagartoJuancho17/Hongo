@@ -241,12 +241,12 @@
     
     <script>document.addEventListener('DOMContentLoaded', function () {
         
-        const sizeRadios = document.querySelectorAll('input[name="size"]');
-        if (sizeRadios.length > 0) {
+        const sizeRadios = document.querySelectorAll('input[name="size"]'); 
+        if (sizeRadios.length > 0) { // checkear si hay radios clickeados
             sizeRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
-                    const sizeSeleccionado = this.value;
-                    const colorSeleccionado = document.querySelector('input[name="color"]:checked')?.value || null;
+                    const sizeSeleccionado = this.value; // obtener el valor del radio clickeado
+                    const colorSeleccionado = document.querySelector('input[name="color"]:checked')?.value || null; // obtener el color seleccionado
                     const minPrice = parseInt(document.getElementById('min').value);
                     const maxPrice = parseInt(document.getElementById('max').value);
                     mostrarProductos(colorSeleccionado, minPrice, maxPrice, sizeSeleccionado);
@@ -256,17 +256,17 @@
         
         const minSlider = document.getElementById('min');
         const maxSlider = document.getElementById('max');
-        if (minSlider && maxSlider) {
+        if (minSlider && maxSlider) { // checkear si los sliders existen
             minSlider.oninput = function () {
-                if (parseInt(this.value) > parseInt(maxSlider.value)) {
-                    this.value = maxSlider.value;
+                if (parseInt(this.value) > parseInt(maxSlider.value)) { 
+                    this.value = maxSlider.value; // si el valor del slider min es mayor que el max, poner el valor del max
                 }
                 outputMin.innerHTML = this.value;
             };
     
             maxSlider.oninput = function () {
                 if (parseInt(this.value) < parseInt(minSlider.value)) {
-                    this.value = minSlider.value;
+                    this.value = minSlider.value; // si el valor del slider max es menor que el min, poner el valor del min
                 }
                 outputMax.innerHTML = this.value;
             };
@@ -275,8 +275,8 @@
     
     
     function resetSizeFilter() {
-        const sizeRadios = document.querySelectorAll('input[name="size"]');
-        sizeRadios.forEach(radio => radio.checked = false);
+        const sizeRadios = document.querySelectorAll('input[name="size"]'); // obtener todos los radios de tamaño
+        sizeRadios.forEach(radio => radio.checked = false); // desmarcar todos los radios con el boton de all
         mostrarProductos(); 
     }</script>
 

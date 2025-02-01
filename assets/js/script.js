@@ -1,8 +1,8 @@
-let subtotalVal = 0; // Subtotal inicial
+let subtotalVal = 0; // Subtotal inicial del carrito
 let inCarrito = []; // Array para almacenar productos en el carrito
-const cartContainer = document.getElementById('cart-container');
+const cartContainer = document.getElementById('cart-container'); // Contenedor del carrito
 
-//CARROUSEL HOME
+
 
 
 // Array de tamaños disponibles
@@ -41,7 +41,7 @@ function cargarGaleriaDeFotos() {
 
             const imgElement = articulo.querySelector('.product-image');
 
-            // Eventos para cambiar la imagen al pasar el mouse
+            // hover!!!
             imgElement.addEventListener('mouseenter', () => {
                 imgElement.src = producto.imagenHover;
             });
@@ -141,137 +141,17 @@ window.addEventListener("scroll", () => {
 
 // Seleccionar el contenedor donde se agregarán los productos
 const contenedorGalleryShop = document.getElementById('productGrid');
-// Add this function to handle filtering by price range
-function mostrarProductos(colorSeleccionado = null, minPrice = 0, maxPrice = 7000, sizeSeleccionado = null) {
-    contenedorGalleryShop.innerHTML = ""; // Clear the container before displaying filtered products
-
-    productos.forEach(producto => {
-        if (
-            (colorSeleccionado === null || producto.color === colorSeleccionado) &&
-            producto.precio >= minPrice &&
-            producto.precio <= maxPrice &&
-            (sizeSeleccionado === null || producto.size === sizeSeleccionado)
-        ) {
-            const articulo = document.createElement('div');
-            articulo.classList.add('product-item');
-
-            articulo.innerHTML = `
-                <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">                        
-                <h4 class="myriad em08">${producto.nombre}</h4>
-                <div class="product-price myriad em08 color-gris">
-                    $${producto.precio}
-                </div>
-                <p class="flex-center myriad rem1 color-gris">Size: ${producto.size}</p>
-            `;
-
-            const imgElement = articulo.querySelector('.product-image');
-            imgElement.addEventListener('mouseenter', () => {
-                imgElement.src = producto.imagenHover;
-            });
-            imgElement.addEventListener('mouseleave', () => {
-                imgElement.src = producto.imagen;
-            });
-
-            contenedorGalleryShop.appendChild(articulo);
-        }
-    });
-}
-
-function resetGallery() {
-    // Clear any selected color filters
-    const colorRadios = document.querySelectorAll('input[name="color"]');
-    colorRadios.forEach(radio => radio.checked = false);
-
-    // Load all products
-    mostrarProductos();
-}
-
-// Filtros!!!
-document.addEventListener('DOMContentLoaded', function () {
-    const starFilter = document.getElementById('starFilter');
-    const minSlider = document.getElementById('min');
-    const maxSlider = document.getElementById('max');
-    const outputMin = document.getElementById('min-value');
-    const outputMax = document.getElementById('max-value');
-    const colorRadios = document.querySelectorAll('input[name="color"]');
-    let selectedStars = null;
-
-    // Update products based on filters
-    function updateProducts() {
-        const colorSeleccionado = document.querySelector('input[name="color"]:checked')?.value || null;
-        const sizeSeleccionado = document.querySelector('input[name="size"]:checked')?.value || null;
-        const minPrice = parseInt(minSlider.value) || 0;
-        const maxPrice = parseInt(maxSlider.value) || 7000;
-
-        mostrarProductos(colorSeleccionado, minPrice, maxPrice, sizeSeleccionado, selectedStars);
-    }
-
-    // star filter
-    starFilter.addEventListener('click', (event) => {
-        const target = event.target;
-    
-        if (target.tagName === 'SPAN' && target.dataset.value) {
-            const clickedStars = parseInt(target.dataset.value);
-    
-            
-            if (selectedStars === clickedStars) {
-                selectedStars = null; 
-            } else {
-                selectedStars = clickedStars; 
-            }
-    
-            
-            document.querySelectorAll('#starFilter span').forEach((star) => {
-                const starValue = parseInt(star.dataset.value); 
-                if (starValue <= selectedStars) {
-                    star.classList.add('selected');
-                } else {
-                    star.classList.remove('selected');
-                }
-            });
-    
-            // Update the product display
-            updateProducts();
-        }
-    });
-    // Event listener for slider changes
-    minSlider.addEventListener('input', () => {
-        if (parseInt(minSlider.value) > parseInt(maxSlider.value)) {
-            minSlider.value = maxSlider.value;
-        }
-        outputMin.innerHTML = minSlider.value;
-        updateProducts();
-    });
-
-    maxSlider.addEventListener('input', () => {
-        if (parseInt(maxSlider.value) < parseInt(minSlider.value)) {
-            maxSlider.value = minSlider.value;
-        }
-        outputMax.innerHTML = maxSlider.value;
-        updateProducts();
-    });
-
-    // Event listener for color filters
-    colorRadios.forEach(radio => {
-        radio.addEventListener('change', () => {
-            updateProducts();
-        });
-    });
-
-    // Load default products on page load
-    mostrarProductos();
-});
-
+// mostramos los productos por default es decir: sin color ni tamaño seleccionado y precios en cada extremo
 function mostrarProductos(colorSeleccionado = null, minPrice = 0, maxPrice = 7000, sizeSeleccionado = null, selectedStars = null) {
-    contenedorGalleryShop.innerHTML = ""; // Clear the container before applying filters
+    contenedorGalleryShop.innerHTML = ""; // limpia el contenedor para agregar nuevos productos
 
     productos.forEach(producto => {
         if (
-            (colorSeleccionado === null || producto.color === colorSeleccionado) &&
-            producto.precio >= minPrice &&
-            producto.precio <= maxPrice &&
-            (sizeSeleccionado === null || producto.size === sizeSeleccionado) &&
-            (selectedStars === null || producto.stars === selectedStars) // Filter by exact stars
+            (colorSeleccionado === null || producto.color === colorSeleccionado) && // si no se seleccionó un color, muestra todos
+            producto.precio >= minPrice && // si no se seleccionó un rango de precio, muestra todos
+            producto.precio <= maxPrice && // si no se seleccionó un rango de precio, muestra todos
+            (sizeSeleccionado === null || producto.size === sizeSeleccionado) && // si no se seleccionó un tamaño, muestra todos
+            (selectedStars === null || producto.stars === selectedStars) // si no se seleccionó un filtro de estrellas, muestra todos
         ) {
             const articulo = document.createElement('div');
             articulo.classList.add('product-item');
@@ -299,23 +179,109 @@ function mostrarProductos(colorSeleccionado = null, minPrice = 0, maxPrice = 700
     });
 }
 
+function resetGallery() { // resetea la galeria
+    // limpiar los filtros
+    const colorRadios = document.querySelectorAll('input[name="color"]');
+    colorRadios.forEach(radio => radio.checked = false);
+
+    // carga los productos por default
+    mostrarProductos();
+}
+
+// Filtros!!!
+document.addEventListener('DOMContentLoaded', function () {
+    const starFilter = document.getElementById('starFilter');
+    const minSlider = document.getElementById('min');
+    const maxSlider = document.getElementById('max');
+    const outputMin = document.getElementById('min-value');
+    const outputMax = document.getElementById('max-value');
+    const colorRadios = document.querySelectorAll('input[name="color"]');
+    let selectedStars = null;  // para que inicie en cero!
+
+    // actualizar los productos cuando se cambia un filtro
+    function updateProducts() {
+        const colorSeleccionado = document.querySelector('input[name="color"]:checked')?.value || null; // si no hay color seleccionado, devuelve null
+        const sizeSeleccionado = document.querySelector('input[name="size"]:checked')?.value || null; // si no hay tamaño seleccionado, devuelve null
+        const minPrice = parseInt(minSlider.value) || 0; // si no hay valor, devuelve 0
+        const maxPrice = parseInt(maxSlider.value) || 7000; // si no hay valor, devuelve 7000
+
+        mostrarProductos(colorSeleccionado, minPrice, maxPrice, sizeSeleccionado, selectedStars); // muestra los productos filtrados
+    }
+
+    // star filter
+    starFilter.addEventListener('click', (event) => {
+        const target = event.target; 
+    
+        if (target.tagName === 'SPAN' && target.dataset.value) {
+            const clickedStars = parseInt(target.dataset.value); // devuelve el valor de los estrellas
+    
+            
+            if (selectedStars === clickedStars) {
+                selectedStars = null;  // resetea el filtro de estrellas
+            } else {
+                selectedStars = clickedStars; 
+            } // si no hay estrellas seleccionadas, devuelve null
+    
+            
+            document.querySelectorAll('#starFilter span').forEach((star) => {
+                const starValue = parseInt(star.dataset.value);  // devuelve el valor de las estrellas
+                if (starValue <= selectedStars) {
+                    star.classList.add('selected'); // agrega la clase selected es decir marca las estrellas
+                } else {
+                    star.classList.remove('selected'); // quita la clase selected es decir quita las estrellas
+                }
+            });
+    
+            // actualizar los productos
+            updateProducts();
+        }
+    });
+    // event listener para los sliders
+    minSlider.addEventListener('input', () => {
+        if (parseInt(minSlider.value) > parseInt(maxSlider.value)) {
+            minSlider.value = maxSlider.value; // si el valor del slider es mayor al maximo, el valor del slider es igual al maximo
+        }
+        outputMin.innerHTML = minSlider.value; // muestra el valor del slider
+        updateProducts();
+    });
+
+    maxSlider.addEventListener('input', () => {
+        if (parseInt(maxSlider.value) < parseInt(minSlider.value)) { 
+            maxSlider.value = minSlider.value; // si el valor del slider es menor al minimo, el valor del slider es igual al minimo
+        }
+        outputMax.innerHTML = maxSlider.value; // muestra el valor del slider
+        updateProducts(); 
+    });
+
+    // Event listener para los filtros de color
+    colorRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            updateProducts();
+        });
+    });
+
+    // carga los productos por default
+    mostrarProductos();
+});
+
+
 function toggleSidebar() {
     var sidebar = document.getElementById('sidebar');
     var content = document.getElementById('content');
     sidebar.classList.toggle('open');
     content.classList.toggle('shifted');
 }
-
+//para cambiar de seccion en watch product
 document.querySelectorAll('.tab-link').forEach(link => {
-    link.addEventListener('click', function () {
-        document.querySelectorAll('.tab-link').forEach(item => item.classList.remove('active'));
+    link.addEventListener('click', function () { 
+        document.querySelectorAll('.tab-link').forEach(item => item.classList.remove('active')); 
         document.querySelectorAll('.content-section-imagen-product').forEach(section => {
-            section.style.display = 'none'; // Hide all sections
+            section.style.display = 'none'; // esconde la seccion seleccionada
             section.classList.remove('active');
         });
         this.classList.add('active');
         const activeSection = document.getElementById(this.getAttribute('data-tab'));
-        activeSection.style.display = 'block'; // Show the selected section
+        activeSection.style.display = 'block'; // muestra la seccion seleccionada
         activeSection.classList.add('active');
     });
 });
@@ -327,8 +293,8 @@ document.getElementById('toggleCartButton').addEventListener('click', function (
     cart.classList.toggle('open'); // es la clase para desplegarlo
 });
 
-function carrito(meter) {
-    const subtotalElement = document.getElementById("subtotal");
+function carrito(meter) { // meter es true o false
+    const subtotalElement = document.getElementById("subtotal"); 
     const carro = document.getElementById("carro");
     const producto = productos[meter];
 
@@ -390,16 +356,17 @@ function carrito(meter) {
 function toggleDarkMode() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark'; //si current es dark entonces el newtheme es light y sino viceversa
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme); // cambiar el tema
+    localStorage.setItem('theme', newTheme); // guardar el tema en el local storage
     updateDarkModeIcon(newTheme);
 }
 
+// Función para cambiar el icono del botón de dark mode
 function updateDarkModeIcon(theme) {
-    const darkModeToggle = document.getElementById('darkModeToggle');
+    const darkModeToggle = document.getElementById('darkModeToggle'); 
     const icon = darkModeToggle.querySelector('i');
     if (theme === 'dark') {
-        icon.classList.remove('fa-moon');
+        icon.classList.remove('fa-moon'); 
         icon.classList.add('fa-sun');
     } else {
         icon.classList.remove('fa-sun');
@@ -415,31 +382,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-function toggleAccordion(button) {
-    const content = button.nextElementSibling;
-    const isOpen = content.style.display === "block";
-
-    
-    document.querySelectorAll(".accordion-content").forEach((el) => {
-        el.style.display = "none";
-        el.previousElementSibling.textContent = el.previousElementSibling.textContent.replace("-", "+");
-    });
-
-// Toggle the current section
-    if (!isOpen) {
-        content.style.display = "block";
-        button.textContent = button.textContent.replace("+", "-");
-    }
-}
-
 function actualizarFiltro() {
-    const colorSeleccionado = document.querySelector('input[name="color"]:checked')?.value || null;
-    const minPrice = parseInt(document.getElementById('min').value);
-    const maxPrice = parseInt(document.getElementById('max').value);
-    const sizeSeleccionado = document.querySelector('input[name="size"]:checked')?.value || null;
+    const colorSeleccionado = document.querySelector('input[name="color"]:checked')?.value || null; // obtener el color seleccionado
+    const minPrice = parseInt(document.getElementById('min').value); // obtener el precio mínimo
+    const maxPrice = parseInt(document.getElementById('max').value); // obtener el precio máximo
+    const sizeSeleccionado = document.querySelector('input[name="size"]:checked')?.value || null; // obtener el tamaño seleccionado
 
-    mostrarProductos(colorSeleccionado, minPrice, maxPrice, sizeSeleccionado);
+    mostrarProductos(colorSeleccionado, minPrice, maxPrice, sizeSeleccionado); // mostrar los productos filtrados
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -451,110 +400,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-/*let currentLoadedProducts = 4; // Keep track of how many products are loaded
-
-function gallery4() {
-    const galleryContainer = document.getElementById('gallery-container');
-    if (galleryContainer) {
-        // Clear existing content
-        galleryContainer.innerHTML = '';
-        
-        // Load products from current index up to currentLoadedProducts
-        productos.slice(0, currentLoadedProducts).forEach((producto, index) => {
-            // Create a new section for the product
-            const sectionProducto = document.createElement('section');
-            sectionProducto.classList.add('gallery-4-cards', 'pos-relative');
-            sectionProducto.id = `div${index + 1}`; 
-
-            // Add the products
-            sectionProducto.innerHTML = `
-                <img src="${producto.imagen}" class="w100 product-image" alt="${producto.nombre}">
-                <h3 class="myriad rem1">${producto.nombre}</h3>
-                <p class="flex-center myriad rem1 color-gris">$${producto.precio}</p>
-                <p class="flex-center myriad rem1 color-gris">Size: ${producto.size}</p>
-                <div class="add-text">
-                    <button onclick="carrito(${index})" class="addcart">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    </button>
-                </div>
-            `;
-
-            // Add the section to container
-            galleryContainer.appendChild(sectionProducto);
-
-            // Hover effect
-            const imgElement = sectionProducto.querySelector('.product-image');
-            imgElement.addEventListener('mouseenter', () => {
-                imgElement.src = producto.imagenHover;
-            });
-            imgElement.addEventListener('mouseleave', () => {
-                imgElement.src = producto.imagen;
-            });
-        });
-
-        // Update special styling for div3 and div4
-        const div3 = document.getElementById('div3');
-        if (div3) {
-            div3.style.gridColumn = 'span 2';
-            div3.style.gridRow = 'span 2';
-        }
-
-        const div4 = document.getElementById('div4');
-        if (div4) {
-            div4.style.gridColumn = 'span 2';
-            div4.style.transform = 'rotate(180deg)';
-        }
-
-        // Show/hide load more button based on remaining products
-        const loadMoreBtn = document.getElementById('loadMoreBtn');
-        if (loadMoreBtn) {
-            loadMoreBtn.style.display = currentLoadedProducts >= productos.length ? 'none' : 'block';
-        }
-    }
-}
-
-// Add this new function to handle loading more products
-function loadMore() {
-    currentLoadedProducts += 4; // Increase the number of products to show
-    if (currentLoadedProducts > productos.length) {
-        currentLoadedProducts = productos.length;
-    }
-    gallery4(); // Reload the gallery with more products
-}
-
-// Call gallery4() initially to load the first 4 products
-gallery4();
-
-// Add event listener for the load more button
-document.addEventListener('DOMContentLoaded', () => {
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', loadMore);
-    }
-});*/
-
-
-const merca = [
-    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
-    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
-    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
-    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
-    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
-    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
-    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" },
-    { nombre: "Classic Camo Blacktop", precio: 180, imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp" }
-];
-
 let currentLoadedProducts = 4;
 
 function cargarGaleria() {
-    const galleryContainer = document.getElementById('galleryContainer');
-    galleryContainer.innerHTML = '';
-
-    merca.slice(0, currentLoadedProducts).forEach((producto, index) => {
+    const gallery4Container = document.getElementById('gallery4Container');
+    gallery4Container.innerHTML = '';
+    
+    productos.slice(0, currentLoadedProducts).forEach((producto, index) => {
         const sectionProducto = document.createElement('section');
-        sectionProducto.classList.add('gallery-4-cards');
-        sectionProducto.id = `div${index + 1}`;
+        sectionProducto.classList.add('gallery-grid' , 'display-grid', 'galleryContainer');
+        sectionProducto.classList = `div${index + 1}`;
         sectionProducto.style.backgroundImage = `url(${producto.imagen})`;
 
         sectionProducto.innerHTML = `
@@ -562,14 +417,23 @@ function cargarGaleria() {
             <p class="myriad rem1 color-gris">$${producto.precio}</p>
         `;
 
-        galleryContainer.appendChild(sectionProducto);
+        gallery4Container.appendChild(sectionProducto);
     });
+    
+    
 }
 
 function loadMore() {
-    if (currentLoadedProducts < merca.length) {
+    if (currentLoadedProducts < productos.length) {
         currentLoadedProducts += 4;
         cargarGaleria();
+
+        // Aumentar la altura del contenedor gallery-grid
+        const galleryGrid = document.querySelector('.gallery-grid');
+        if (galleryGrid) {
+            const currentHeight = parseInt(window.getComputedStyle(galleryGrid).height);
+            galleryGrid.style.height = `${currentHeight + 620}px`;
+        }
     } else {
         alert("No hay más productos para cargar");
     }
