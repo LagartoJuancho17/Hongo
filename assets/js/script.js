@@ -3,7 +3,58 @@ let inCarrito = []; // Array para almacenar productos en el carrito
 const cartContainer = document.getElementById('cart-container'); // Contenedor del carrito
 
 
+const carruselItems = [
+    {
+        imagen: "./assets/images/Reloj1.png",
+        h3: "Hongo of your <br> time a planet",
+        p: "Made from 316L stainless, this classic <br> is intended to stay as such and is designed."
+    },
+    {
+        imagen: "./assets/images/Reloj2.png",
+        h3: "Elegance in every <br> second",
+        p: "Crafted with precision and care, <br> our watches are timeless."
+    },
+    {
+        imagen: "./assets/images/Reloj3.png",
+        h3: "Time is <br> precious",
+        p: "Experience the luxury of <br> our exclusive collection."
+    }
+];
+let currentCarruselIndex = 0;
 
+function actualizarCarrusel() {
+    const homeSection = document.getElementById('homeSection');
+    const item = carruselItems[currentCarruselIndex];
+
+    const homeHTML = `
+        <article class="home-reloj">
+            <img src="${item.imagen}" alt="Reloj${currentCarruselIndex + 1}">
+        </article>
+        <article class="home-content">
+            <h1 class="niveau color-dorado">LES ORIGINALES</h1>
+            <h3 class="niveau color-white em4 text-left">${item.h3}</h3>
+            <p class="niveau em1 color-gris">${item.p}</p>
+            <button class="niveau color-dorado">OUR COLLECTION</button>
+        </article>
+    `;
+
+    homeSection.innerHTML = homeHTML;
+
+    // Actualizar el índice para el siguiente cambio
+    currentCarruselIndex = (currentCarruselIndex + 1) % carruselItems.length;
+}
+
+function cambiarReloj(index) {
+    currentCarruselIndex = index;
+    actualizarCarrusel();
+}
+
+// Llama a la función para cargar la sección home al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    actualizarCarrusel();
+    setInterval(actualizarCarrusel, 5000); // Cambia cada 5 segundos
+});
+// Llama a la función para cargar la sección home al cargar la página
 
 // Array de tamaños disponibles
 const sizes = ["39MM", "40MM", "41MM", "42MM", "45MM"];
