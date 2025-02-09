@@ -3695,5 +3695,11 @@ body {
 }
 
 
+[data-theme="dark"].nav-imagen-product a{
+    color: white;
+}
 
 
+.ul-navbar .li-navbar a.active {
+    color: #D1AE6A; /* Cambia el color según tu preferencia */
+}

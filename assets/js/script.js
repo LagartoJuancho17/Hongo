@@ -1,3 +1,19 @@
+// script.js
+document.addEventListener('DOMContentLoaded', function () {
+    const currentPath = window.location.pathname.split('/').pop(); // Obtiene el nombre del archivo actual
+    console.log("Estoy en current Path: " + currentPath)
+    const navLinks = document.querySelectorAll('.ul-navbar .li-navbar a');
+
+    navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href').split('/').pop(); // Obtiene el nombre del archivo del enlace
+        if (linkPath === currentPath || (linkPath === '' && currentPath === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+});
+
+
+
 let subtotalVal = 0; // Subtotal inicial del carrito
 let inCarrito = []; // Array para almacenar productos en el carrito
 const cartContainer = document.getElementById('cart-container'); // Contenedor del carrito
@@ -21,6 +37,7 @@ const carruselItems = [
     }
 ];
 let currentCarruselIndex = 0;
+
 
 function actualizarCarrusel() {
     const homeSection = document.getElementById('homeSection');
@@ -217,6 +234,8 @@ function mostrarProductos(colorSeleccionado = null, minPrice = 0, maxPrice = 700
                 <p class="flex-center myriad rem1 color-gris">Rating: ${'★'.repeat(producto.stars)}</p>
             `;
 
+            contenedorGalleryShop.appendChild(articulo);
+
             const imgElement = articulo.querySelector('.product-image');
             imgElement.addEventListener('mouseenter', () => {
                 imgElement.src = producto.imagenHover;
@@ -224,8 +243,6 @@ function mostrarProductos(colorSeleccionado = null, minPrice = 0, maxPrice = 700
             imgElement.addEventListener('mouseleave', () => {
                 imgElement.src = producto.imagen;
             });
-
-            contenedorGalleryShop.appendChild(articulo);
         }
     });
 }
@@ -338,6 +355,7 @@ document.querySelectorAll('.tab-link').forEach(link => {
 });
 
 //SHOPPING CART
+
 
 document.getElementById('toggleCartButton').addEventListener('click', function () {
     const cart = document.getElementById('cart');
@@ -493,3 +511,5 @@ function loadMore() {
 document.getElementById('loadMoreBtn').addEventListener('click', loadMore);
 
 cargarGaleria();
+
+

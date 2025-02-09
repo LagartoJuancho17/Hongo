@@ -17,25 +17,26 @@
 <body class="mar-pad0 niveau" id="body-watch-product">
     <header class="display-flex spc-btw navbar w100 items-center">
         <img class="logo" src="./assets/images/logo.png" alt="logo">
-        <nav class="display-flex spc-btw items-center ">
-            <ul class="ul-navbar display-flex mar-pad0 watch-product-li">
-                <li class="li-navbar "><a href="./index.html" class="color-white niveau em1 pos-relative">Home</a></li>
-                <li class="li-navbar"><a href="./gallery.html" class="color-white niveau em1 pos-relative"
-                        >Shop</a></li>
-                <li class="li-navbar"><a href="./watch-product.html" class="color-white niveau em1">Product</a></li>
-                <li class="li-navbar"><a href="./size-guide.html" class="color-white niveau em1 pos-relative">Size Guide</a></li>
-                <li class="li-navbar"><a href="./Shipping-and-delivery.html" class="color-white niveau em1 pos-relative">Shipping</a></li>
-                <li class="li-navbar"><a href="./store-locator.html" class="color-white niveau em1 pos-relative">Store Locator</a></li>
-                <li class="li-navbar"><a href="./contact-page.html" class="color-white niveau em1 pos-relative ">Contact</a></li>
+    
+        <nav class="display-flex spc-btw items-center">
+            <ul class="ul-navbar display-flex mar-pad0" id="navMenu">
+                <li class="li-navbar"><a href="/index.html" class="color-gris-oscuro niveau em1 pos-relative">Home</a></li>
+                <li class="li-navbar"><a href="/gallery.html" class="color-gris-oscuro niveau em1 pos-relative">Shop</a></li>
+                <li class="li-navbar"><a href="/watch-product.html" class="color-gris-oscuro niveau em1">Product</a></li>
+                <li class="li-navbar"><a href="/size-guide.html" class="color-gris-oscuro niveau em1 pos-relative">SizeGuide</a></li>
+                <li class="li-navbar"><a href="/Shipping-and-delivery.html" class="color-gris-oscuro niveau em1 pos-relative">Shipping</a></li>
+                <li class="li-navbar"><a href="/store-locator.html" class="color-gris-oscuro niveau em1 pos-relative">Store Locator</a></li>
+                <li class="li-navbar"><a href="/contact-page.html" class="color-gris-oscuro niveau em1 pos-relative">Contact</a></li>
             </ul>
         </nav>
+    
         <ul class="ul-iconos display-flex">
-            <li class="fas li-iconos"><i class="fa-solid fa-magnifying-glass color-black"></i></li>
-            <li class="fas li-iconos"><i class="fa-regular fa-user color-black"></i></li>
-            <li class="fas li-iconos"><i class="fa-regular fa-heart color-black"></i></li>
-            <li class="fas li-iconos"><i class="fa-solid fa-cart-shopping color-black"></i></li>
+            <li class="fas li-iconos"><i class="fa-solid fa-magnifying-glass color-white"></i></li>
+            <li class="fas li-iconos"><i class="fa-solid fa-user color-white"></i></li>
+            <li class="fas li-iconos"><i class="fa-solid fa-heart color-white"></i></li>
+            <li class="fas li-iconos"><button onclick="carrito(0)" id="toggleCartButton"><i class="fa-solid fa-cart-shopping color-white"></i></button></li>
         </ul>
-        <div class="menu-toggle">
+        <div class="menu-toggle" id="menuToggle">
             <i class="fa-solid fa-bars color-white"></i>
         </div>
     </header>
