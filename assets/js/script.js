@@ -13,6 +13,34 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+function toggleDarkMode() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark'; //si current es dark entonces el newtheme es light y sino viceversa
+    document.documentElement.setAttribute('data-theme', newTheme); // cambiar el tema
+    localStorage.setItem('theme', newTheme); // guardar el tema en el local storage
+    updateDarkModeIcon(newTheme);
+}
+
+// Función para cambiar el icono del botón de dark mode
+function updateDarkModeIcon(theme) {
+    const darkModeToggle = document.getElementById('darkModeToggle'); 
+    const icon = darkModeToggle.querySelector('i');
+    if (theme === 'dark') {
+        icon.classList.remove('fa-moon'); 
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+}
+
+// Llama a la función para asegurarte de que el icono esté correcto al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateDarkModeIcon(savedTheme);
+});
+
 
 let subtotalVal = 0; // Subtotal inicial del carrito
 let inCarrito = []; // Array para almacenar productos en el carrito
@@ -421,34 +449,6 @@ function carrito(meter) { // meter es true o false
 }
 
 /*dark mode*/
-
-function toggleDarkMode() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark'; //si current es dark entonces el newtheme es light y sino viceversa
-    document.documentElement.setAttribute('data-theme', newTheme); // cambiar el tema
-    localStorage.setItem('theme', newTheme); // guardar el tema en el local storage
-    updateDarkModeIcon(newTheme);
-}
-
-// Función para cambiar el icono del botón de dark mode
-function updateDarkModeIcon(theme) {
-    const darkModeToggle = document.getElementById('darkModeToggle'); 
-    const icon = darkModeToggle.querySelector('i');
-    if (theme === 'dark') {
-        icon.classList.remove('fa-moon'); 
-        icon.classList.add('fa-sun');
-    } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-    }
-}
-
-// Llama a la función para asegurarte de que el icono esté correcto al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateDarkModeIcon(savedTheme);
-});
 
 
 function actualizarFiltro() {
