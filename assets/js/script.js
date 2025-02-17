@@ -1,12 +1,12 @@
-// script.js
+// ACTIVE
 document.addEventListener('DOMContentLoaded', function () {
     const currentPath = window.location.pathname.split('/').pop(); // Obtiene el nombre del archivo actual
     console.log("Estoy en current Path: " + currentPath)
-    const navLinks = document.querySelectorAll('.ul-navbar .li-navbar a');
+    const navLinks = document.querySelectorAll('.ul-navbar .li-navbar a'); //Obtiene el navbar
 
     navLinks.forEach(link => {
         const linkPath = link.getAttribute('href').split('/').pop(); // Obtiene el nombre del archivo del enlace
-        if (linkPath === currentPath || (linkPath === '' && currentPath === 'index.html')) {
+        if (linkPath == currentPath) { // Si el enlace es igual al archivo actual 
             link.classList.add('active');
         }
     });
@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function toggleDarkMode() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark'; //si current es dark entonces el newtheme es light y sino viceversa
+    const currentTheme = document.documentElement.getAttribute('data-theme'); 
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark'; // si el currentTheme es dark cambia a light y viceversa 
     document.documentElement.setAttribute('data-theme', newTheme); // cambiar el tema
-    localStorage.setItem('theme', newTheme); // guardar el tema en el local storage
+    localStorage.setItem('theme', newTheme); // guardar el tema en el local storage para que se mantenga al recargar la página 
     updateDarkModeIcon(newTheme);
 }
 
@@ -25,7 +25,7 @@ function toggleDarkMode() {
 function updateDarkModeIcon(theme) {
     const darkModeToggle = document.getElementById('darkModeToggle'); 
     const icon = darkModeToggle.querySelector('i');
-    if (theme === 'dark') {
+    if (theme == 'dark') {
         icon.classList.remove('fa-moon'); 
         icon.classList.add('fa-sun');
     } else {
@@ -89,17 +89,11 @@ function actualizarCarrusel() {
     currentCarruselIndex = (currentCarruselIndex + 1) % carruselItems.length;
 }
 
-function cambiarReloj(index) {
-    currentCarruselIndex = index;
-    actualizarCarrusel();
-}
-
 // Llama a la función para cargar la sección home al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     actualizarCarrusel();
     setInterval(actualizarCarrusel, 5000); // Cambia cada 5 segundos
 });
-// Llama a la función para cargar la sección home al cargar la página
 
 // Array de tamaños disponibles
 const sizes = ["39MM", "40MM", "41MM", "42MM", "45MM"];
@@ -137,7 +131,7 @@ function cargarGaleriaDeFotos() {
 
             const imgElement = articulo.querySelector('.product-image');
 
-            // hover!!!
+            // hover!!! 
             imgElement.addEventListener('mouseenter', () => {
                 imgElement.src = producto.imagenHover;
             });
@@ -193,7 +187,7 @@ function bannerMovimiento() {
     const bannerSection = document.querySelector('.banner');
     // Verificar si existe el elemento con la clase .banner
     if (bannerSection) {
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries, observer) => { // Observar si el banner está en la vista del usuario 
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-view');
@@ -201,7 +195,7 @@ function bannerMovimiento() {
                 }
             });
         }, {
-            threshold: 0.5
+            threshold: 0.5 // Cuando el 50% del banner esté en la vista del usuario 
         });
 
         observer.observe(bannerSection);
@@ -511,5 +505,7 @@ function loadMore() {
 document.getElementById('loadMoreBtn').addEventListener('click', loadMore);
 
 cargarGaleria();
+
+
 
 

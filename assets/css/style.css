@@ -22,7 +22,6 @@
     background-color: wheat;
 }
 
-
 /*---------------------CLASES ÚTILES---------------------*/
 
 * {
@@ -400,7 +399,6 @@ header {
     height: 100vh;
     background-color: #2B241F;
     padding: 20px;
-    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -666,7 +664,6 @@ button:hover {
 
 /*GALERIAA*/
 .gallery {
-    display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
@@ -1379,9 +1376,7 @@ footer ul {
 }
 
 
-
 .items-container {
-    display: flex;
     flex-direction: column;
     gap: 10px;
 }
@@ -1513,7 +1508,6 @@ ul li:nth-of-type(6) .custom-checkbox::before {
 }
 
 .sorting {
-    display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
@@ -1526,13 +1520,11 @@ ul li:nth-of-type(6) .custom-checkbox::before {
 }
 
 .sorting .left {
-    display: flex;
     gap: 10px;
     flex-wrap: wrap;
 }
 
 .column-buttons {
-    display: flex;
     gap: 5px;
 }
 
@@ -2325,39 +2317,10 @@ ul li:nth-of-type(6) .custom-checkbox::before {
     gap: 10px;
 }
 
-.image-thumbnails {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.image-thumbnails img {
-    width: 80px;
-    height: auto;
-    cursor: pointer;
-    opacity: 0.8;
-    border: 1px solid #ccc;
-}
-
-.image-thumbnails img:hover {
-    opacity: 1;
-}
-
 .main-image img {
     width: 100%;
     height: auto;
     border: 1px solid #ccc;
-}
-
-.product-details {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-h1 {
-    font-size: 24px;
-    margin: 0;
 }
 
 .price {
@@ -2370,12 +2333,6 @@ h1 {
     font-size: 14px;
     color: #555;
     line-height: 1.6;
-}
-
-.options {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
 
 .colors,
