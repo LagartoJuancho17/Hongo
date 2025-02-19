@@ -1,12 +1,12 @@
-// ACTIVE
+// script.js
 document.addEventListener('DOMContentLoaded', function () {
     const currentPath = window.location.pathname.split('/').pop(); // Obtiene el nombre del archivo actual
     console.log("Estoy en current Path: " + currentPath)
-    const navLinks = document.querySelectorAll('.ul-navbar .li-navbar a'); //Obtiene el navbar
+    const navLinks = document.querySelectorAll('.ul-navbar .li-navbar a');
 
     navLinks.forEach(link => {
         const linkPath = link.getAttribute('href').split('/').pop(); // Obtiene el nombre del archivo del enlace
-        if (linkPath == currentPath) { // Si el enlace es igual al archivo actual 
+        if (linkPath === currentPath || (linkPath === '' && currentPath === 'index.html')) {
             link.classList.add('active');
         }
     });
@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function toggleDarkMode() {
-    const currentTheme = document.documentElement.getAttribute('data-theme'); 
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark'; // si el currentTheme es dark cambia a light y viceversa 
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark'; //si current es dark entonces el newtheme es light y sino viceversa
     document.documentElement.setAttribute('data-theme', newTheme); // cambiar el tema
-    localStorage.setItem('theme', newTheme); // guardar el tema en el local storage para que se mantenga al recargar la página 
+    localStorage.setItem('theme', newTheme); // guardar el tema en el local storage
     updateDarkModeIcon(newTheme);
 }
 
@@ -25,7 +25,7 @@ function toggleDarkMode() {
 function updateDarkModeIcon(theme) {
     const darkModeToggle = document.getElementById('darkModeToggle'); 
     const icon = darkModeToggle.querySelector('i');
-    if (theme == 'dark') {
+    if (theme === 'dark') {
         icon.classList.remove('fa-moon'); 
         icon.classList.add('fa-sun');
     } else {
@@ -89,29 +89,36 @@ function actualizarCarrusel() {
     currentCarruselIndex = (currentCarruselIndex + 1) % carruselItems.length;
 }
 
+function cambiarReloj(index) {
+    currentCarruselIndex = index;
+    actualizarCarrusel();
+}
+
 // Llama a la función para cargar la sección home al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     actualizarCarrusel();
     setInterval(actualizarCarrusel, 5000); // Cambia cada 5 segundos
 });
+// Llama a la función para cargar la sección home al cargar la página
 
 // Array de tamaños disponibles
 const sizes = ["39MM", "40MM", "41MM", "42MM", "45MM"];
 // Array de productos para la galeria!!!
 const productos = [
-    { nombre: "Chrono Camuflado Black", imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp", imagenHover: "./assets/images/GalleryImagenes/RelojGallery2.jpg", precio: 1500, color: "black", stars: 5, size: sizes[Math.floor(Math.random() * sizes.length)] },
-    { nombre: "Chrono Black", imagen: "./assets/images/GalleryImagenes/RelojGallery1.0.webp", imagenHover: "./assets/images/GalleryImagenes/RelojGallery1.webp", precio: 2000, color: "black", stars: 4, size: sizes[Math.floor(Math.random() * sizes.length)] },
-    { nombre: "Chrono Rose Gold", imagen: "./assets/images/GalleryImagenes/RelojGallery3.0.jpg", imagenHover: "./assets/images/GalleryImagenes/RelojGallery3.jpg", precio: 4500, color: "rosegold", stars: 5, size: sizes[Math.floor(Math.random() * sizes.length)] },
-    { nombre: "Gunmetal Black Tan", imagen: "./assets/images/GalleryImagenes/RelojGallery4.0.webp", imagenHover: "./assets/images/GalleryImagenes/RelojGallery4.webp", precio: 1800, color: "golden", stars: 3, size: sizes[Math.floor(Math.random() * sizes.length)] },
-    { nombre: "Leather Gray Belt", imagen: "./assets/images/GalleryImagenes/RelojGallery5.0.jpg", imagenHover: "./assets/images/GalleryImagenes/RelojGallery5.jpg", precio: 2000, color: "silver", stars: 2, size: sizes[Math.floor(Math.random() * sizes.length)] },
-    { nombre: "Bristol Silver Link", imagen: "./assets/images/GalleryImagenes/RelojGallery6.0.webp", imagenHover: "./assets/images/GalleryImagenes/RelojGallery6.webp", precio: 7000, color: "silver", stars: 4, size: sizes[Math.floor(Math.random() * sizes.length)] },
-    { nombre: "Bourbon 360 Gold", imagen: "./assets/images/GalleryImagenes/RelojGallery7.0.jpg", imagenHover: "./assets/images/GalleryImagenes/RelojGallery7.jpg", precio: 3750, color: "green", stars: 5, size: sizes[Math.floor(Math.random() * sizes.length)] },
-    { nombre: "Bristol Rose Gold", imagen: "./assets/images/GalleryImagenes/RelojGallery8.0.jpg", imagenHover: "./assets/images/GalleryImagenes/RelojGallery8.jpg", precio: 4200, color: "rosegold", stars: 4, size: sizes[Math.floor(Math.random() * sizes.length)] },
-    { nombre: "Bristol Gold Link", imagen: "./assets/images/GalleryImagenes/RelojGallery9.0.jpg", imagenHover: "./assets/images/GalleryImagenes/RelojGallery9.jpg", precio: 2800, color: "green", stars: 3, size: sizes[Math.floor(Math.random() * sizes.length)] },
-    { nombre: "Blue Sky", imagen: "./assets/images/GalleryImagenes/RelojGallery10.0.jpg", imagenHover: "./assets/images/GalleryImagenes/RelojGallery10.jpg", precio: 1000, color: "blue", stars: 2, size: sizes[Math.floor(Math.random() * sizes.length)] },
-    { nombre: "Bourbon Silver", imagen: "./assets/images/GalleryImagenes/RelojGallery11.0.webp", imagenHover: "./assets/images/GalleryImagenes/RelojGallery11.webp", precio: 6500, color: "brown", stars: 5, size: sizes[Math.floor(Math.random() * sizes.length)] },
-    { nombre: "Chrono Rouse Gold", imagen: "./assets/images/GalleryImagenes/RelojGallery1.0.webp", imagenHover: "./assets/images/GalleryImagenes/RelojGallery1.webp", precio: 2300, color: "brown", stars: 3, size: sizes[Math.floor(Math.random() * sizes.length)] },
+    { nombre: "Chrono Camuflado Black", imagen: "./assets/images/GalleryImagenes/RelojGallery2.0.webp", imagenHover: "./assets/images/GalleryImagenes/RelojGallery2.jpg", precio: 1500, color: "black", stars: 5, size: "39MM" },
+    { nombre: "Chrono Black", imagen: "./assets/images/GalleryImagenes/RelojGallery1.0.webp", imagenHover: "./assets/images/GalleryImagenes/RelojGallery1.webp", precio: 2000, color: "black", stars: 4, size: "40MM" },
+    { nombre: "Chrono Rose Gold", imagen: "./assets/images/GalleryImagenes/RelojGallery3.0.jpg", imagenHover: "./assets/images/GalleryImagenes/RelojGallery3.jpg", precio: 4500, color: "rosegold", stars: 5, size: "41MM" },
+    { nombre: "Gunmetal Black Tan", imagen: "./assets/images/GalleryImagenes/RelojGallery4.0.webp", imagenHover: "./assets/images/GalleryImagenes/RelojGallery4.webp", precio: 1800, color: "golden", stars: 3, size: "42MM" },
+    { nombre: "Leather Gray Belt", imagen: "./assets/images/GalleryImagenes/RelojGallery5.0.jpg", imagenHover: "./assets/images/GalleryImagenes/RelojGallery5.jpg", precio: 2000, color: "silver", stars: 2, size: "45MM" },
+    { nombre: "Bristol Silver Link", imagen: "./assets/images/GalleryImagenes/RelojGallery6.0.webp", imagenHover: "./assets/images/GalleryImagenes/RelojGallery6.webp", precio: 7000, color: "silver", stars: 4, size: "39MM" },
+    { nombre: "Bourbon 360 Gold", imagen: "./assets/images/GalleryImagenes/RelojGallery7.0.jpg", imagenHover: "./assets/images/GalleryImagenes/RelojGallery7.jpg", precio: 3750, color: "green", stars: 5, size: "40MM" },
+    { nombre: "Bristol Rose Gold", imagen: "./assets/images/GalleryImagenes/RelojGallery8.0.jpg", imagenHover: "./assets/images/GalleryImagenes/RelojGallery8.jpg", precio: 4200, color: "rosegold", stars: 4, size: "41MM" },
+    { nombre: "Bristol Gold Link", imagen: "./assets/images/GalleryImagenes/RelojGallery9.0.jpg", imagenHover: "./assets/images/GalleryImagenes/RelojGallery9.jpg", precio: 2800, color: "green", stars: 3, size: "42MM" },
+    { nombre: "Blue Sky", imagen: "./assets/images/GalleryImagenes/RelojGallery10.0.jpg", imagenHover: "./assets/images/GalleryImagenes/RelojGallery10.jpg", precio: 1000, color: "blue", stars: 2, size: "45MM" },
+    { nombre: "Bourbon Silver", imagen: "./assets/images/GalleryImagenes/RelojGallery11.0.webp", imagenHover: "./assets/images/GalleryImagenes/RelojGallery11.webp", precio: 6500, color: "brown", stars: 5, size: "39MM" },
+    { nombre: "Chrono Rouse Gold", imagen: "./assets/images/GalleryImagenes/RelojGallery1.0.webp", imagenHover: "./assets/images/GalleryImagenes/RelojGallery1.webp", precio: 2300, color: "brown", stars: 3, size: "40MM" },
 ];
+
 
 // Selecciona el contenedor de la galería
 function cargarGaleriaDeFotos() {
@@ -131,7 +138,7 @@ function cargarGaleriaDeFotos() {
 
             const imgElement = articulo.querySelector('.product-image');
 
-            // hover!!! 
+            // hover!!!
             imgElement.addEventListener('mouseenter', () => {
                 imgElement.src = producto.imagenHover;
             });
@@ -187,7 +194,7 @@ function bannerMovimiento() {
     const bannerSection = document.querySelector('.banner');
     // Verificar si existe el elemento con la clase .banner
     if (bannerSection) {
-        const observer = new IntersectionObserver((entries, observer) => { // Observar si el banner está en la vista del usuario 
+        const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-view');
@@ -195,7 +202,7 @@ function bannerMovimiento() {
                 }
             });
         }, {
-            threshold: 0.5 // Cuando el 50% del banner esté en la vista del usuario 
+            threshold: 0.5
         });
 
         observer.observe(bannerSection);
@@ -236,13 +243,17 @@ function mostrarProductos(colorSeleccionado = null, minPrice = 0, maxPrice = 700
     contenedorGalleryShop.innerHTML = ""; // limpia el contenedor para agregar nuevos productos
 
     productos.forEach(producto => {
+        const sizeMatch = sizeSeleccionado === null || 
+                         (sizeSeleccionado === "all" ? true : producto.size === sizeSeleccionado);
+        
         if (
             (colorSeleccionado === null || producto.color === colorSeleccionado) && // si no se seleccionó un color, muestra todos
             producto.precio >= minPrice && // si no se seleccionó un rango de precio, muestra todos
             producto.precio <= maxPrice && // si no se seleccionó un rango de precio, muestra todos
-            (sizeSeleccionado === null || producto.size === sizeSeleccionado) && // si no se seleccionó un tamaño, muestra todos
+            sizeMatch && // si no se seleccionó un tamaño, muestra todos
             (selectedStars === null || producto.stars === selectedStars) // si no se seleccionó un filtro de estrellas, muestra todos
         ) {
+
             const articulo = document.createElement('div');
             articulo.classList.add('product-item');
 
@@ -280,7 +291,21 @@ function resetGallery() { // resetea la galeria
 
 // Filtros!!!
 document.addEventListener('DOMContentLoaded', function () {
+    // Add event listeners for size filter
+    const sizeRadios = document.querySelectorAll('input[name="size"]');
+    sizeRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            const sizeSeleccionado = this.value;
+            const colorSeleccionado = document.querySelector('input[name="color"]:checked')?.value || null;
+            const minPrice = parseInt(document.getElementById('min').value);
+            const maxPrice = parseInt(document.getElementById('max').value);
+            const selectedStars = document.querySelector('#starFilter span.selected')?.dataset.value || null;
+            mostrarProductos(colorSeleccionado, minPrice, maxPrice, sizeSeleccionado, selectedStars);
+        });
+    });
+
     const starFilter = document.getElementById('starFilter');
+
     const minSlider = document.getElementById('min');
     const maxSlider = document.getElementById('max');
     const outputMin = document.getElementById('min-value');
@@ -506,6 +531,50 @@ document.getElementById('loadMoreBtn').addEventListener('click', loadMore);
 
 cargarGaleria();
 
+function resetSizeFilter() {
+    const sizeRadios = document.querySelectorAll('input[name="size"]');
+    sizeRadios.forEach(radio => radio.checked = false);
+    const colorSeleccionado = document.querySelector('input[name="color"]:checked')?.value || null;
+    const minPrice = parseInt(document.getElementById('min').value);
+    const maxPrice = parseInt(document.getElementById('max').value);
+    const selectedStars = document.querySelector('#starFilter span.selected')?.dataset.value || null;
+    mostrarProductos(colorSeleccionado, minPrice, maxPrice, null, selectedStars);
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const sizeRadios = document.querySelectorAll('input[name="size"]');
+    if (sizeRadios.length > 0) { // checkear si hay radios clickeados
+        sizeRadios.forEach(radio => {
+            radio.addEventListener('change', function () {
+                const sizeSeleccionado = this.value; // obtener el valor del radio clickeado
+                const colorSeleccionado = document.querySelector('input[name="color"]:checked')?.value || null; // obtener el color seleccionado
+                const minPrice = parseInt(document.getElementById('min').value);
+                const maxPrice = parseInt(document.getElementById('max').value);
+                mostrarProductos(colorSeleccionado, minPrice, maxPrice, sizeSeleccionado);
+            });
+        });
+    }
+
+    const minSlider = document.getElementById('min');
+    const maxSlider = document.getElementById('max');
+    if (minSlider && maxSlider) { // checkear si los sliders existen
+        minSlider.oninput = function () {
+            if (parseInt(this.value) > parseInt(maxSlider.value)) {
+                this.value = maxSlider.value; // si el valor del slider min es mayor que el max, poner el valor del max
+            }
+            outputMin.innerHTML = this.value;
+        };
+
+        maxSlider.oninput = function () {
+            if (parseInt(this.value) < parseInt(minSlider.value)) {
+                this.value = minSlider.value; // si el valor del slider max es menor que el min, poner el valor del min
+            }
+            outputMax.innerHTML = this.value;
+        };
+    }
+});
 
 
 
