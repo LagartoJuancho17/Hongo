@@ -1,12 +1,18 @@
-// script.js
-document.addEventListener('DOMContentLoaded', function () {
-    const currentPath = window.location.pathname.split('/').pop(); // Obtiene el nombre del archivo actual
+//Obtener el ACTIVE
+document.addEventListener('DOMContentLoaded', function () { // Espera a que el DOM esté completamente cargado sino funciona mal
+    const currentPath = window.location.pathname.split('/').pop(); // Obtiene el nombre del archivo actual 
+    /* 
+    Si la URL es: http://127.0.0.1:5501/contact-page.html
+    window.location.pathname devuelve: "/contact-page.html"
+    .split('/') → ["", "contact-page.html"]
+    .pop() → "contact-page.html"
+    */
     console.log("Estoy en current Path: " + currentPath)
     const navLinks = document.querySelectorAll('.ul-navbar .li-navbar a');
 
     navLinks.forEach(link => {
         const linkPath = link.getAttribute('href').split('/').pop(); // Obtiene el nombre del archivo del enlace
-        if (linkPath === currentPath || (linkPath === '' && currentPath === 'index.html')) {
+        if (linkPath == currentPath) { // Si el enlace es igual al archivo actual 
             link.classList.add('active');
         }
     });
@@ -467,7 +473,6 @@ function carrito(meter) { // meter es true o false
     subtotalElement.textContent = subtotalVal.toFixed(2); 
 }
 
-/*dark mode*/
 
 
 function actualizarFiltro() {
@@ -489,15 +494,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 let currentLoadedProducts = 4;
-
 function cargarGaleria() {
     const gallery4Container = document.getElementById('gallery4Container');
     gallery4Container.innerHTML = '';
     
     productos.slice(0, currentLoadedProducts).forEach((producto, index) => {
         const sectionProducto = document.createElement('section');
-        sectionProducto.classList.add('gallery-grid' , 'display-grid', 'galleryContainer');
-        sectionProducto.classList = `div${index + 1}`;
+        
+        // Asigna la clase ciclando entre div1, div2, div3 y div4
+        const claseIndex = (index % 4) + 1;
+        sectionProducto.classList.add(`div${claseIndex}`);
+
         sectionProducto.style.backgroundImage = `url(${producto.imagen})`;
 
         sectionProducto.innerHTML = `
@@ -507,9 +514,8 @@ function cargarGaleria() {
 
         gallery4Container.appendChild(sectionProducto);
     });
-    
-    
 }
+
 
 function loadMore() {
     if (currentLoadedProducts < productos.length) {
